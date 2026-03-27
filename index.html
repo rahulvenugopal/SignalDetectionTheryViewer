@@ -237,7 +237,16 @@ input[type="range"]:active::-webkit-slider-thumb { cursor: grabbing; transform: 
   .metrics-bar { grid-template-columns: 1fr 1fr; gap: 7px; }
   .metric { padding: 10px 12px 8px; }
   .metric-num { font-size: 1.4rem; }
-  .metric-formula { display: none; }
+  /* Show formula — shrink font and allow wrapping instead of hiding */
+  .metric-formula {
+    font-size: 0.52rem;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+  /* Metric label slightly smaller so formula has room */
+  .metric-label { font-size: 0.52rem; }
 
   /* Stack canvas above matrix */
   .middle-row { grid-template-columns: 1fr; gap: 8px; }
@@ -256,9 +265,23 @@ input[type="range"]:active::-webkit-slider-thumb { cursor: grabbing; transform: 
 
   /* Larger thumb for touch */
   input[type="range"]::-webkit-slider-thumb { width: 20px; height: 20px; }
+  /* Larger touch target for range inputs */
+  input[type="range"] { height: 6px; }
+  input[type="range"]:hover { height: 6px; }
 
-  .interp-row { gap: 5px; }
+  /* Pills — allow wrapping so they don't overflow */
+  .interp-row { gap: 5px; flex-wrap: wrap; }
   .pill { font-size: 0.55rem; padding: 3px 8px; }
+
+  /* Canvas header — stack label and legend on small screens */
+  .canvas-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+  /* Slider description text — readable but compact */
+  .sl-desc { font-size: 0.55rem; }
+  .sl-label { font-size: 0.62rem; }
+
+  /* Matrix footer — slightly tighter */
+  .matrix-footer { font-size: 0.52rem; }
 }
 </style>
 </head>
